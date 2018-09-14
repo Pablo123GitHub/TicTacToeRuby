@@ -21,8 +21,8 @@ describe Grid do
   context "allocates the choices to each side playing" do
     it "allocates first decision to first player" do
       subject.records(4, 'X')
-      subject.records(5, 'X')
-      expect(subject.answers_array).to eq(["","","","","X","X","","",""])
+      subject.records(5, 'O')
+      expect(subject.answers_array).to eq(["","","","","X","O","","",""])
     end
   end
   end
