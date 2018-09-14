@@ -1,17 +1,20 @@
 class Grid
 
+  attr_reader(:answers_array)
+
   def initialize
-    @answers_array = []
+    @answers_array = Array.new(9, "")
   end
 
-  def answers_total
-    @answers_array.length
-  end
 
-  def records(inputNumber)
-    raise 'Index spot already taken' if @answers_array.include? inputNumber
-    raise 'Invalid index' unless (0..8).include?(inputNumber)
-    @answers_array.push(inputNumber)
-  end
+  # def records(index, cross_or_nought)
+  #   raise 'Index spot already taken' if @answers_array.include? index
+  #   raise 'Invalid index' unless (0..8).include?(index)
+  #   @answers_array[index] = cross_or_nought
+  # end
+
+
+
+
 
 end
