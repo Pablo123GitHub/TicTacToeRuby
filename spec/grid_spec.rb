@@ -13,5 +13,10 @@ RSpec.describe Grid do
 
   end
 
+  it "throws an error when trying to record at the same index x times" do
+    subject.records(1)
+    expect { subject.records(1) }.to raise_error("Index spot already taken")
+  end
+
 
 end
