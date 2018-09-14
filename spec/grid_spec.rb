@@ -18,5 +18,11 @@ RSpec.describe Grid do
     expect { subject.records(1) }.to raise_error("Index spot already taken")
   end
 
+  it "checks that the input is more than 0 and less or equal than 9" do
+    expect{ subject.records(9)}.to raise_error("Invalid index")
+    expect{ subject.records(-1)}.to raise_error("Invalid index")
+
+  end
+
 
 end

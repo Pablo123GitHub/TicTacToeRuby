@@ -10,7 +10,8 @@ class Grid
 
   def records(inputNumber)
     raise 'Index spot already taken' if @answers_array.include? inputNumber
-      @answers_array.push(inputNumber)
+    raise 'Invalid index' unless (0..8).include?(inputNumber)
+    @answers_array.push(inputNumber)
   end
 
 end
