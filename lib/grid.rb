@@ -13,13 +13,13 @@ class Grid
   end
 
   def display_grid()
-    build_grid(@answers_array)
+    build_grid()
   end
 
 
   private
 
-  def build_grid(arr_input=Array.new(3, ""))
+  def build_grid()
     return (
     first_line() + second_line() + third_line()
     )
@@ -32,13 +32,13 @@ class Grid
 
   def second_line
     "
-  #{@answers_array[3]} | #{@answers_array[4]}  | #{@answers_array[5]}  " + "
+   #{@answers_array[3]} | #{@answers_array[4]}  | #{@answers_array[5]}  " + "
  ---+---+--- "
   end
 
   def third_line
     "
-  #{@answers_array[6]} | #{@answers_array[7]}  | #{@answers_array[8]}  "
+   #{@answers_array[6]} | #{@answers_array[7]}  | #{@answers_array[8]}  "
   end
 
 
