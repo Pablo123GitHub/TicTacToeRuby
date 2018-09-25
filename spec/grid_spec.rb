@@ -30,10 +30,10 @@ describe Grid do
       it " shows the intial grid with default empty grid" do
         expect(subject.display_grid()).to eq("    |   |   \n ---+---+---\n    |   |   \n ---+---+--- \n    |   |   ")
       end
-      it "shows X on the grid when the player records her choice" do
-        subject.records(0, 'X')
-        expect(subject.display_grid()).to eq("   X |   |   \n ---+---+---\n    |   |   \n ---+---+--- \n    |   |   ")
-      end
+      # it "shows X on the grid when the player records her choice" do
+      #   subject.records(0, 'X')
+      #   expect(subject.display_grid()).to eq("   X |   |   \n ---+---+---\n    |   |   \n ---+---+--- \n    |   |   ")
+      # end
 
     end
   end

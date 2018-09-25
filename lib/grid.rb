@@ -26,19 +26,24 @@ class Grid
   end
 
   def first_line
-    "   #{@answers_array[0]} | #{@answers_array[1]}  | #{@answers_array[2]}  " + "
+    " #{output_element(0)} |#{output_element(1)} |#{output_element(2)}  " + "
  ---+---+---"
   end
 
   def second_line
     "
-   #{@answers_array[3]} | #{@answers_array[4]}  | #{@answers_array[5]}  " + "
+ #{output_element(3)} |#{output_element(4)} |#{output_element(5)}  " + "
  ---+---+--- "
   end
 
   def third_line
     "
-   #{@answers_array[6]} | #{@answers_array[7]}  | #{@answers_array[8]}  "
+ #{output_element(6)} |#{output_element(7)} |#{output_element(8)}  "
+  end
+
+  def output_element(index)
+    @answers_array[index].empty? ? ( "  #{@answers_array[index]}") : " #{@answers_array[index]}"
+
   end
 
 
