@@ -12,9 +12,34 @@ class Grid
     @answers_array[index] = cross_or_nought
   end
 
+  def display_grid()
+    build_grid(@answers_array)
+  end
 
 
+  private
 
+  def build_grid(arr_input=Array.new(3, ""))
+    return (
+    first_line() + second_line() + third_line()
+    )
+  end
+
+  def first_line
+    "   #{@answers_array[0]} | #{@answers_array[1]}  | #{@answers_array[2]}  " + "
+ ---+---+---"
+  end
+
+  def second_line
+    "
+  #{@answers_array[3]} | #{@answers_array[4]}  | #{@answers_array[5]}  " + "
+ ---+---+--- "
+  end
+
+  def third_line
+    "
+  #{@answers_array[6]} | #{@answers_array[7]}  | #{@answers_array[8]}  "
+  end
 
 
 

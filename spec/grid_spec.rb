@@ -25,6 +25,13 @@ describe Grid do
       expect(subject.answers_array).to eq(["","","","","X","O","","",""])
     end
   end
+
+    context "displays the grid where the X and O are recorded" do
+      it " shows the intial grid with default empty grid" do
+        expect(subject.display_grid()).to eq("    |   |   \n ---+---+---\n   |   |   \n ---+---+--- \n   |   |   ")
+      end
+
+    end
   end
 
 end
