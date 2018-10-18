@@ -7,15 +7,23 @@ class Grid
   end
 
   def records(index, cross_or_nought)
-    index_int = index.to_i
-    raise 'input is not a number' unless is_integer(index)
-    raise 'Invalid index' unless (0..8).include?(index_int)
-    raise 'Index spot already taken' unless @answers_array[index_int].empty?
-    @answers_array[index_int] = cross_or_nought
+      index_int = index.to_i
+      raise 'input is not a number' unless is_integer(index)
+      raise 'Invalid index' unless (0..8).include?(index_int)
+      raise 'Index spot already taken' unless @answers_array[index_int].empty?
+      @answers_array[index_int] = cross_or_nought
   end
 
-  def display_grid()
-    build_grid()
+  def display_grid
+    build_grid
+  end
+
+  def is_full
+    @answers_array.join().length == 9
+  end
+
+  def one_side_wins
+
   end
 
 
@@ -30,7 +38,7 @@ class Grid
     end
   end
 
-  def build_grid()
+  def build_grid
     return (
     first_line() + second_line() + third_line()
     )
@@ -55,6 +63,4 @@ class Grid
   def output_element(index)
     @answers_array[index].empty? ? ( "  #{@answers_array[index]}") : " #{@answers_array[index]}"
   end
-
-
 end

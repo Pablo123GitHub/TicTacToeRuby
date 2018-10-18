@@ -1,4 +1,4 @@
-require('grid')
+require 'grid'
 
 describe Grid do
 
@@ -42,5 +42,26 @@ describe Grid do
 
     end
 
+  context "checks if the grid is full or not" do
+    it "shows grid is full when all squares are taken" do
+      subject.records(4, "X")
+      subject.records(0, "O")
+      subject.records(2, "X")
+      subject.records(6, "O")
+      subject.records(3, "X")
+      subject.records(5, "O")
+      subject.records(1, "X")
+      subject.records(7, "O")
+      subject.records(8, "O")
+      expect(subject.is_full).to eq(true)
+    end
+    it "shows grid is NOT FULL  when NOT ALL squares are taken" do
+      subject.records(0, "X")
+      subject.records(4, "O")
+      subject.records(6, "X")
+
+      expect(subject.is_full).to eq(false)
+    end
+  end
 
 end
