@@ -18,8 +18,17 @@ describe Game do
       grid = double("grid")
       grid.stub(:new)
       @grid.stub(:is_full).and_return(false)
+      @grid.stub(:one_side_wins).and_return(false)
       game = Game.new(grid)
       expect(game.is_finished).to eq(false)
+    end
+    it "tells the game is finished if grid is NOT full and One side wins" do
+      grid = double("grid")
+      grid.stub(:new)
+      @grid.stub(:is_full).and_return(false)
+      @grid.stub(:one_side_wins).and_return(true)
+      game = Game.new(grid)
+      expect(game.is_finished).to eq(true)
     end
 
   end

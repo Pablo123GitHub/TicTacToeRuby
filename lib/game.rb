@@ -10,8 +10,10 @@ class Game
   end
 
   def is_finished
-    @grid.is_full
+    @grid.is_full || @grid.one_side_wins
   end
+
+
 
 
 end
