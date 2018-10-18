@@ -64,4 +64,27 @@ describe Grid do
     end
   end
 
+  context " checks if one side has won the game" do
+    it " shows that someone wins as soon as 3 noughts are aligned" do
+      subject.records(0, "X")
+      subject.records(4, "O")
+      subject.records(6, "X")
+      subject.records(3, "O")
+      subject.records(2, "X")
+      subject.records(5, "O")
+
+      expect(subject.one_side_wins).to eq(true)
+    end
+    it " shows that nobody wins as long as three noughts/crosses are not aligned" do
+      subject.records(0, "X")
+      subject.records(4, "O")
+      subject.records(6, "X")
+      subject.records(3, "O")
+      subject.records(2, "X")
+      subject.records(8, "O")
+
+      expect(subject.one_side_wins).to eq(false)
+    end
+  end
+
 end

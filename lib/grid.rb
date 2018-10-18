@@ -2,6 +2,9 @@ class Grid
 
   attr_reader(:answers_array)
 
+  ARRAY_WIN_SEQUENCE = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8],[0,4,8], [2,4,6] ]
+
+
   def initialize
     @answers_array = Array.new(9, "")
   end
@@ -23,12 +26,19 @@ class Grid
   end
 
   def one_side_wins
-
+    ARRAY_WIN_SEQUENCE.each do |arr|
+      return true if three_symbols_aligned(arr)
+    end
+    false
   end
 
 
   private
 
+
+  def three_symbols_aligned(arr)
+  (@answers_array[arr[0]] == @answers_array[arr[1]] && @answers_array[arr[1]] == @answers_array[arr[2]])
+  end
 
   def is_integer(integer_input)
     begin
@@ -37,6 +47,7 @@ class Grid
       raise 'input is not a number'
     end
   end
+
 
   def build_grid
     return (
