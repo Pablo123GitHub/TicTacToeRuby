@@ -2,11 +2,14 @@ require 'grid'
 
 describe Grid do
 
+  describe "#initialize" do
+    it "contains an array of 9 empty strings when an new grid instance is created" do
+      expect(subject.answers_array).to eq(Array.new(9, ""))
+    end
+  end
+
   describe "#records" do
     context " checks that the input is valid " do
-      it "contains an array of 9 empty strings at the start" do
-        expect(subject.answers_array).to eq(Array.new(9, ""))
-      end
 
       it "throws an error when trying to record at the same index more than once" do
         subject.records(1, "X")
@@ -16,7 +19,6 @@ describe Grid do
       it "throws an error if the input is not a number" do
         expect { subject.records("string", "X")}.to raise_error("input is not a number")
       end
-
 
       it "checks that the input is more than 0 and less or equal than 8" do
         expect{ subject.records(9, "X")}.to raise_error("Invalid index")
@@ -162,14 +164,12 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-
       it "displays 3 Xs  aligned on diagonal upper-left to right" do
         subject.play(0)
         subject.play(4)
         subject.play(8)
         expect(subject.one_side_wins).to eq(true)
       end
-
 
       it "displays 3 Xs  aligned on diagonal upper-right to left" do
         subject.play(2)
@@ -179,8 +179,73 @@ describe Grid do
       end
     end
 
+    context "the computer wins" do
+
+      it "displays 3 Os  aligned on the first line" do
+        allow(subject).to receive(:rand).and_return(0)
+        subject.play(3)
+        subject.play(4)
+        subject.play(6)
+
+        expect(subject.one_side_wins).to eq(true)
+      end
+
+      it "displays 3 Os  aligned on the second line" do
+        allow(subject).to receive(:rand).and_return(2,1)
+        subject.play(0)
+        subject.play(1)
+        subject.play(8)
+        expect(subject.one_side_wins).to eq(true)
+      end
+
+      it "displays 3 Os  aligned on the third line" do
+        allow(subject).to receive(:rand).and_return(7,4,3)
+        subject.play(0)
+        subject.play(1)
+        subject.play(3)
+        expect(subject.one_side_wins).to eq(true)
+      end
+
+      it "displays 3 Os  aligned on the first colunn" do
+        allow(subject).to receive(:rand).and_return(0,0,2)
+        subject.play(1)
+        subject.play(2)
+        subject.play(8)
+        expect(subject.one_side_wins).to eq(true)
+      end
+
+      it "displays 3 Os  aligned on the second column" do
+        allow(subject).to receive(:rand).and_return(0,1,3)
+        subject.play(0)
+        subject.play(2)
+        subject.play(8)
+        expect(subject.one_side_wins).to eq(true)
+      end
 
 
+      it "displays 3 Os  aligned on the third column" do
+        allow(subject).to receive(:rand).and_return(1,2,3)
+        subject.play(0)
+        subject.play(1)
+        subject.play(7)
+        expect(subject.one_side_wins).to eq(true)
+      end
 
+      it "displays 3 Os  aligned on diagonal upper-left to right" do
+        allow(subject).to receive(:rand).and_return(0,1,3)
+        subject.play(1)
+        subject.play(2)
+        subject.play(7)
+        expect(subject.one_side_wins).to eq(true)
+      end
+
+      it "displays 3 Os  aligned on diagonal upper-right to left" do
+        allow(subject).to receive(:rand).and_return(1,1,2)
+        subject.play(0)
+        subject.play(1)
+        subject.play(7)
+        expect(subject.one_side_wins).to eq(true)
+      end
+    end
   end
 end

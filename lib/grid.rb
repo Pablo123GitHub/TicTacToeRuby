@@ -26,7 +26,6 @@ class Grid
   end
 
   def one_side_wins
-    # print "WHAAAT #{@answers_array}"
     ARRAY_WIN_SEQUENCE.each do |arr|
       return true if three_symbols_aligned(arr)
     end
