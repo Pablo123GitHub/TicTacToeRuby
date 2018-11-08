@@ -8,6 +8,16 @@ describe Grid do
     end
   end
 
+  describe "#disrecord_human_and_computer_choices_grid" do
+    it "shows the intial grid with default empty grid" do
+      expect(subject.display_grid()).to eq("    |   |    \n ---+---+---\n    |   |    \n ---+---+--- \n    |   |    ")
+    end
+    it "shows X on the grid when the record_human_and_computer_choiceser records her choice" do
+      subject.records(0, 'X')
+      expect(subject.display_grid()).to eq("  X |   |    \n ---+---+---\n    |   |    \n ---+---+--- \n    |   |    ")
+    end
+  end
+
   describe "#records" do
     context " checks that the input is valid " do
 
@@ -20,30 +30,20 @@ describe Grid do
         expect { subject.records("string", "X")}.to raise_error("input is not a number")
       end
 
-      it "checks that the input is more than 0 and less or equal than 8" do
+      it "throws an error if the input is more than 0 and less or equal than 8" do
         expect{ subject.records(9, "X")}.to raise_error("Invalid index")
         expect{ subject.records(-1, "X")}.to raise_error("Invalid index")
       end
     end
 
-    context "allocates the choices to each side playing" do
-      it "allocates first decision to first player" do
+    context "allocates the choices to each side record_human_and_computer_choicesing" do
+      it "allocates first decision to first record_human_and_computer_choiceser" do
         subject.records(4, 'X')
         subject.records(5, 'O')
         expect(subject.answers_array).to eq(["","","","","X","O","","",""])
       end
     end
 
-    context "displays the grid where the X and O are recorded" do
-      it " shows the intial grid with default empty grid" do
-        expect(subject.display_grid()).to eq("    |   |    \n ---+---+---\n    |   |    \n ---+---+--- \n    |   |    ")
-      end
-      it "shows X on the grid when the player records her choice" do
-        subject.records(0, 'X')
-        expect(subject.display_grid()).to eq("  X |   |    \n ---+---+---\n    |   |    \n ---+---+--- \n    |   |    ")
-      end
-
-    end
 
     context "checks if the grid is full or not" do
       it "shows grid is full when all squares are taken" do
@@ -91,26 +91,25 @@ describe Grid do
     end
   end
 
-  describe "#play" do
+  describe "#record_human_and_computer_choices" do
     context "Filling the grid" do
       before(:each) do
         allow(subject).to receive(:rand).and_return(0)
-        subject.play(0)
-        subject.play(2)
-        subject.play(5)
-        subject.play(7)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(2)
+        subject.record_human_and_computer_choices(5)
+        subject.record_human_and_computer_choices(7)
       end
 
-      it "fills the full grid after a player plays 4 times" do
+      it "fills the full grid after a record_human_and_computer_choiceser record_human_and_computer_choicess 4 times" do
         expect(subject.is_full).to eq(true)
       end
 
-      it "throws an error if a player tries to play a fifth time" do
+      it "throws an error if a record_human_and_computer_choiceser tries to record_human_and_computer_choices a fifth time" do
         errorMessage = "Game is finished please start a new game !"
-        expect { subject.play(8)}.to raise_error(errorMessage)
+        expect { subject.record_human_and_computer_choices(8)}.to raise_error(errorMessage)
       end
     end
-
   end
 
   describe "#one_side_wins" do
@@ -120,130 +119,130 @@ describe Grid do
         allow(subject).to receive(:rand).and_return(0)
       end
 
-      it "displays 3 Xs  aligned on the first line" do
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the first line" do
         allow(subject).to receive(:rand).and_return(3)
-        subject.play(0)
-        subject.play(1)
-        subject.play(2)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(2)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Xs  aligned on the second line" do
-        subject.play(3)
-        subject.play(4)
-        subject.play(5)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the second line" do
+        subject.record_human_and_computer_choices(3)
+        subject.record_human_and_computer_choices(4)
+        subject.record_human_and_computer_choices(5)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Xs  aligned on the third line" do
-        subject.play(6)
-        subject.play(7)
-        subject.play(8)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the third line" do
+        subject.record_human_and_computer_choices(6)
+        subject.record_human_and_computer_choices(7)
+        subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Xs  aligned on the first colunn" do
-        subject.play(0)
-        subject.play(3)
-        subject.play(6)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the first colunn" do
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(3)
+        subject.record_human_and_computer_choices(6)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Xs  aligned on the second column" do
-        subject.play(1)
-        subject.play(4)
-        subject.play(7)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the second column" do
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(4)
+        subject.record_human_and_computer_choices(7)
         expect(subject.one_side_wins).to eq(true)
       end
 
 
-      it "displays 3 Xs  aligned on the third column" do
-        subject.play(2)
-        subject.play(5)
-        subject.play(8)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the third column" do
+        subject.record_human_and_computer_choices(2)
+        subject.record_human_and_computer_choices(5)
+        subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Xs  aligned on diagonal upper-left to right" do
-        subject.play(0)
-        subject.play(4)
-        subject.play(8)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on diagonal upper-left to right" do
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(4)
+        subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Xs  aligned on diagonal upper-right to left" do
-        subject.play(2)
-        subject.play(4)
-        subject.play(6)
+      it "disrecord_human_and_computer_choicess 3 Xs  aligned on diagonal upper-right to left" do
+        subject.record_human_and_computer_choices(2)
+        subject.record_human_and_computer_choices(4)
+        subject.record_human_and_computer_choices(6)
         expect(subject.one_side_wins).to eq(true)
       end
     end
 
     context "the computer wins" do
 
-      it "displays 3 Os  aligned on the first line" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on the first line" do
         allow(subject).to receive(:rand).and_return(0)
-        subject.play(3)
-        subject.play(4)
-        subject.play(6)
+        subject.record_human_and_computer_choices(3)
+        subject.record_human_and_computer_choices(4)
+        subject.record_human_and_computer_choices(6)
 
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Os  aligned on the second line" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on the second line" do
         allow(subject).to receive(:rand).and_return(2,1)
-        subject.play(0)
-        subject.play(1)
-        subject.play(8)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Os  aligned on the third line" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on the third line" do
         allow(subject).to receive(:rand).and_return(7,4,3)
-        subject.play(0)
-        subject.play(1)
-        subject.play(3)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(3)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Os  aligned on the first colunn" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on the first colunn" do
         allow(subject).to receive(:rand).and_return(0,0,2)
-        subject.play(1)
-        subject.play(2)
-        subject.play(8)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(2)
+        subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Os  aligned on the second column" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on the second column" do
         allow(subject).to receive(:rand).and_return(0,1,3)
-        subject.play(0)
-        subject.play(2)
-        subject.play(8)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(2)
+        subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
 
-      it "displays 3 Os  aligned on the third column" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on the third column" do
         allow(subject).to receive(:rand).and_return(1,2,3)
-        subject.play(0)
-        subject.play(1)
-        subject.play(7)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(7)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Os  aligned on diagonal upper-left to right" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on diagonal upper-left to right" do
         allow(subject).to receive(:rand).and_return(0,1,3)
-        subject.play(1)
-        subject.play(2)
-        subject.play(7)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(2)
+        subject.record_human_and_computer_choices(7)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "displays 3 Os  aligned on diagonal upper-right to left" do
+      it "disrecord_human_and_computer_choicess 3 Os  aligned on diagonal upper-right to left" do
         allow(subject).to receive(:rand).and_return(1,1,2)
-        subject.play(0)
-        subject.play(1)
-        subject.play(7)
+        subject.record_human_and_computer_choices(0)
+        subject.record_human_and_computer_choices(1)
+        subject.record_human_and_computer_choices(7)
         expect(subject.one_side_wins).to eq(true)
       end
     end

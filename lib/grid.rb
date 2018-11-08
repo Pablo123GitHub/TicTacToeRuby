@@ -32,7 +32,7 @@ class Grid
     false
   end
 
-  def play(index)
+  def record_human_and_computer_choices(index)
     records(index, "X")
     lengthArrIndexEmpty = empty_indexes_in_array.length
     randomNumber = rand(0..lengthArrIndexEmpty-1)
