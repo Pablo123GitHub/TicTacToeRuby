@@ -19,30 +19,41 @@ describe Game do
   end
 
   describe "#is_finished" do
-    context 'when the grid is full and one side wins' do
 
-      let(:grid) { create_full_grid }
+    context "The grid is full" do
+      before(:each) do
+        allow(grid).to receive(:is_full).and_return(true)
+      end
+      # let(:grid) { create_full_grid }
 
-      it "tells the game is NOT finished" do
-          allow(grid).to receive(:is_full).and_return(true)
-          allow(grid).to receive(:one_side_wins).and_return(true)
-        puts "ONE #{grid.is_full}"
-        puts "TWO #{grid.one_side_wins}"
+      it "is finished When one side wins" do
+        allow(grid).to receive(:one_side_wins).and_return(true)
+        expect(subject.is_finished).to eq(true)
+      end
 
+      it "is finished When nobody wins" do
+        allow(grid).to receive(:one_side_wins).and_return(false)
         expect(subject.is_finished).to eq(true)
       end
     end
-  end
 
-  context "tracks events throughout the game" do
-    it "tells the game is finished if grid is NOT full and One side wins" do
-      grid = double("grid")
-      grid.stub(:new)
-      @grid.stub(:is_full).and_return(false)
-      @grid.stub(:one_side_wins).and_return(true)
-      game = Game.new(grid)
-      expect(game.is_finished).to eq(true)
+    context "The grid is not full" do
+      before(:each) do
+        allow(grid).to receive(:is_full).and_return(false)
+      end
+
+      it "is finished When one side wins" do
+        allow(grid).to receive(:one_side_wins).and_return(true)
+        expect(subject.is_finished).to eq(true)
+      end
+
+      it "is NOT finished as long as nobody wins " do
+        allow(grid).to receive(:one_side_wins).and_return(false)
+        expect(subject.is_finished).to eq(false)
+      end
+
     end
+
   end
 
   context "records input and adds a random play from the computer" do
