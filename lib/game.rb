@@ -1,8 +1,8 @@
 
 class Game
 
-  def initialize (grid)
-    @grid = grid.new
+  def initialize(grid)
+    @grid = grid
   end
 
   def start
@@ -12,8 +12,5 @@ class Game
   def is_finished
     @grid.is_full || @grid.one_side_wins
   end
-
-
-
 
 end
