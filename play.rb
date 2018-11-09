@@ -1,15 +1,22 @@
 require_relative('./lib/grid')
+require_relative('./lib/game')
 
 grid = Grid.new()
+game = Game.new(grid)
 
-while true
-  puts "select a number between 0 and 8\n"
-  puts " and press Enter"
+game.game_rules_display
 
-  input_player = gets
-  grid.records(input_player, "X")
-  puts grid.display_grid()
+while !game.is_finished
+
+
 end
+
+#
+# while true
+#   input_player = gets
+#   grid.records(input_player, "X")
+#   puts grid.display_grid()
+# end
 
 
 

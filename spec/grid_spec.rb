@@ -8,7 +8,7 @@ describe Grid do
     end
   end
 
-  describe "#disrecord_human_and_computer_choices_grid" do
+  describe "#display_grid" do
     it "shows the intial grid with default empty grid" do
       expect(subject.display_grid()).to eq("    |   |    \n ---+---+---\n    |   |    \n ---+---+--- \n    |   |    ")
     end
@@ -119,7 +119,7 @@ describe Grid do
         allow(subject).to receive(:rand).and_return(0)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the first line" do
+      it "display 3 Xs  aligned on the first line" do
         allow(subject).to receive(:rand).and_return(3)
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(1)
@@ -127,28 +127,28 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the second line" do
+      it "display 3 Xs  aligned on the second line" do
         subject.record_human_and_computer_choices(3)
         subject.record_human_and_computer_choices(4)
         subject.record_human_and_computer_choices(5)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the third line" do
+      it "display 3 Xs  aligned on the third line" do
         subject.record_human_and_computer_choices(6)
         subject.record_human_and_computer_choices(7)
         subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the first colunn" do
+      it "display 3 Xs  aligned on the first colunn" do
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(3)
         subject.record_human_and_computer_choices(6)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the second column" do
+      it "display 3 Xs  aligned on the second column" do
         subject.record_human_and_computer_choices(1)
         subject.record_human_and_computer_choices(4)
         subject.record_human_and_computer_choices(7)
@@ -156,21 +156,21 @@ describe Grid do
       end
 
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on the third column" do
+      it "display 3 Xs  aligned on the third column" do
         subject.record_human_and_computer_choices(2)
         subject.record_human_and_computer_choices(5)
         subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on diagonal upper-left to right" do
+      it "display 3 Xs  aligned on diagonal upper-left to right" do
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(4)
         subject.record_human_and_computer_choices(8)
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Xs  aligned on diagonal upper-right to left" do
+      it "display 3 Xs  aligned on diagonal upper-right to left" do
         subject.record_human_and_computer_choices(2)
         subject.record_human_and_computer_choices(4)
         subject.record_human_and_computer_choices(6)
@@ -180,7 +180,7 @@ describe Grid do
 
     context "the computer wins" do
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on the first line" do
+      it "display 3 Os  aligned on the first line" do
         allow(subject).to receive(:rand).and_return(0)
         subject.record_human_and_computer_choices(3)
         subject.record_human_and_computer_choices(4)
@@ -189,7 +189,7 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on the second line" do
+      it "display 3 Os  aligned on the second line" do
         allow(subject).to receive(:rand).and_return(2,1)
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(1)
@@ -197,7 +197,7 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on the third line" do
+      it "display 3 Os  aligned on the third line" do
         allow(subject).to receive(:rand).and_return(7,4,3)
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(1)
@@ -205,7 +205,7 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on the first colunn" do
+      it "display 3 Os  aligned on the first colunn" do
         allow(subject).to receive(:rand).and_return(0,0,2)
         subject.record_human_and_computer_choices(1)
         subject.record_human_and_computer_choices(2)
@@ -213,7 +213,7 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on the second column" do
+      it "display 3 Os  aligned on the second column" do
         allow(subject).to receive(:rand).and_return(0,1,3)
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(2)
@@ -222,7 +222,7 @@ describe Grid do
       end
 
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on the third column" do
+      it "display 3 Os  aligned on the third column" do
         allow(subject).to receive(:rand).and_return(1,2,3)
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(1)
@@ -230,7 +230,7 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on diagonal upper-left to right" do
+      it "display 3 Os  aligned on diagonal upper-left to right" do
         allow(subject).to receive(:rand).and_return(0,1,3)
         subject.record_human_and_computer_choices(1)
         subject.record_human_and_computer_choices(2)
@@ -238,7 +238,7 @@ describe Grid do
         expect(subject.one_side_wins).to eq(true)
       end
 
-      it "disrecord_human_and_computer_choicess 3 Os  aligned on diagonal upper-right to left" do
+      it "display 3 Os  aligned on diagonal upper-right to left" do
         allow(subject).to receive(:rand).and_return(1,1,2)
         subject.record_human_and_computer_choices(0)
         subject.record_human_and_computer_choices(1)
