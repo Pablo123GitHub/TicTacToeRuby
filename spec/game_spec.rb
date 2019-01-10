@@ -31,7 +31,8 @@ describe Game do
     context "Track each player's move  " do
       it "uses the input to record it in the grid" do
         allow($stdin).to receive(:gets).and_return(1)
-        expect { subject.play(1) }.to output("output message\n").to_stdout
+
+        expect { subject.play }.to output("output message\n").to_stdout
       end
 
     end

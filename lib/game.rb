@@ -14,7 +14,7 @@ class Game
     puts "  0  | 1 | 2 \n ---+---+---\n  3  | 4 | 5   \n ---+---+--- \n  6  | 7 | 8  "
   end
 
-  def play(index)
+  def play
     $stdin.gets
     puts "output message"
   end
